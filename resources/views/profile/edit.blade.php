@@ -1,35 +1,36 @@
 @extends('layouts.app')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@endpush
+
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-        <h3>Profil Saya</h3>
+<div class="profile-card">
+
+    <div class="profile-header">
+        <h3>👤 Profil Pengguna</h3>
     </div>
 
-    <div class="card-body">
-        <p><strong>Nama:</strong> {{ Auth::user()->name }}</p>
-        <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+    <div class="profile-body">
 
-        <hr>
+        <div class="profile-item">
+            <strong>Nama</strong>
+            <span>{{ $user->name }}</span>
+        </div>
 
-        <h5>Edit Profil</h5>
+        <div class="profile-item">
+            <strong>Email</strong>
+            <span>{{ $user->email }}</span>
+        </div>
 
-        @include('profile.partials.update-profile-information-form')
-
-        <hr>
-
-        <h5>Ubah Password</h5>
-
-        @include('profile.partials.update-password-form')
-
-        <hr>
-
-        <h5>Hapus Akun</h5>
-
-        @include('profile.partials.delete-user-form')
+        <div class="profile-item">
+            <strong>ID User</strong>
+            <span>{{ $user->id }}</span>
+        </div>
 
     </div>
+
 </div>
 
 @endsection
